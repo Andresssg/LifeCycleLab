@@ -46,4 +46,25 @@
         android:text="@string/reset"
         />
 
+    <Button
+        android:id="@+id/lap_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:onClick="onClickLap"
+        android:text="@string/lap"
+        />
+
+    <TextView
+        android:id="@+id/lap_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="23sp"/>
+
+
 </LinearLayout>
