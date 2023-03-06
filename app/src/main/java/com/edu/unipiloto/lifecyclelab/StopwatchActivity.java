@@ -37,9 +37,9 @@ public class StopwatchActivity extends AppCompatActivity {
 
     public void onClickStart(View view) {
         running = true;
-        if(lap == 1){
-        final TextView lapView = (TextView) findViewById(R.id.lap_view);
-        lapView.setText("");
+        if (lap == 1) {
+            final TextView lapView = (TextView) findViewById(R.id.lap_view);
+            lapView.setText("");
         }
 
     }
@@ -61,7 +61,7 @@ public class StopwatchActivity extends AppCompatActivity {
         currentTime = 0;
     }
 
-    public void finishLapsCount(){
+    public void finishLapsCount() {
         running = false;
         seconds = 0;
         currentTime = 0;
@@ -73,25 +73,21 @@ public class StopwatchActivity extends AppCompatActivity {
             return;
         final TextView lapView = (TextView) findViewById(R.id.lap_view);
 
-        int hours = currentTime / 3600;
-        int minutes = (currentTime % 3600) / 60;
-        int secs = currentTime % 3600;
-
+        int secs = currentTime % 60;
+        int minutes = currentTime / 60 % 60;
+        int hours = currentTime / 3600 % 24;
         String time = String.format(Locale.getDefault(), "%d:%02d:%02d", hours, minutes, secs);
-
         String text = "Vuelta " + lap + " " + time;
-
         String previousText = (String) lapView.getText();
         lapView.setText(text + "\n" + previousText);
+
         lap++;
         resetLap();
-        if(lap == 6){
+        if (lap == 6) {
             finishLapsCount();
             return;
         }
     }
-
-
 
     private void runTimer() {
         final TextView timeView = (TextView) findViewById(R.id.time_view);
@@ -100,8 +96,8 @@ public class StopwatchActivity extends AppCompatActivity {
             @Override
             public void run() {
                 int secs = seconds % 60;
-                int minutes = secs / 60;
-                int hours = minutes / 60;
+                int minutes = seconds / 60 % 60;
+                int hours = seconds / 3600 % 24;
                 String time = String.format(Locale.getDefault(), "%d:%02d:%02d", hours, minutes, secs);
                 timeView.setText(time);
                 if (running) {
