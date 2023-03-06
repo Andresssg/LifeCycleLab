@@ -44,6 +44,7 @@ public class StopwatchActivity extends AppCompatActivity {
     public void onClickReset(View view) {
         running = false;
         seconds = 0;
+
     }
 
     private void runTimer() {
